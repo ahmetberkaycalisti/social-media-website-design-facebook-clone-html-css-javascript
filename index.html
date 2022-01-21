@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <div class="page_wrape">
+
+        <!-- Header Start Here -->
+        <header class="d_flex fixed">
+            <div class="left-part d_flex">
+                <div class="logo">
+                    <img src="data:image/png;base64,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" alt="">
+                </div>
+                <div class="search_bar">
+                    <form action="">
+                        <input type="text" name="" placeholder="Search Facebook" id="">
+                        <button><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="mid-menu">
+                <ul class="d_flex">
+                    <!-- <li><a href="#"><img src="" alt=""></a></li> -->
+                    <li class="active"><a href="#"><i class="fas fa-home"></i></a></li>
+                    <li><a href="#"><i class="fas fa-user-friends"></i></a></li>
+                    <li><a href="#"><i class="fab fa-watchman-monitoring"></i></a></li>
+                    <li><a href="#"><i class="fas fa-funnel-dollar"></i></a></li>
+                    <li><a href="#"><i class="fas fa-users"></i></a></li>
+                </ul>
+            </div>
+            <div class="right-part">
+                <ul class="d_flex_sb">
+                    <li>
+                        <a href="#" class="avtar d_flex">
+                            <div class="round-img">
+                                <img src="https://pbs.twimg.com/profile_images/3691489229/e0b2f866e2e1449ad4303bc8a57c5168_400x400.jpeg" alt="">
+                            </div>
+                            <span>Ahmet</span>
+                        </a>
+                    </li>
+                    <!-- <li><a href="#"><img src="" alt=""></a></li> -->
+                    <li><a href="#"><i class="fas fa-bars"></i></a></li>
+                    <li><a href="#"><i class="fab fa-facebook-messenger"></i></a></li>
+                    <li><a href="#"><i class="fas fa-flag"></i></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-circle-down"></i></a></li>
+                </ul>
+            </div>
+        </header>
+        <!-- Header Ends Here -->
+
+        <!-- Main Content Starts Here -->
+        <div class="main_content">
+            <!-- Left Sidebar Starts Here -->
+            <div class="left-sidebar">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-virus"></i></span>
+                            <h4>COVID-19 Information Center</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-user-friends"></i></span>
+                            <h4>Find Friends</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-store-alt"></i></span>
+                            <h4>Marketplace</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                            <h4>Events</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-people-arrows"></i></span>
+                            <h4>Groups</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-tv"></i></span>
+                            <h4>Watch</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-memory"></i></span>
+                            <h4>Memories</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-save"></i></span>
+                            <h4>Saved</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-file-alt"></i></span>
+                            <h4>Pages</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-briefcase"></i></span>
+                            <h4>Jobs</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fab fa-buysellads"></i></span>
+                            <h4>Ads Center</h4>
+                        </a>
+                    </li>
+                    <li class="see_more">
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-angle-down"></i></span>
+                            <h4>See More</h4>
+                        </a>
+                    </li>
+                    <li class="overflow_btn">
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-tasks"></i></span>
+                            <h4>Ads Manager</h4>
+                        </a>
+                    </li>
+                    <li class="overflow_btn">
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-hand-holding-heart"></i></span>
+                            <h4>Blood Donations</h4>
+                        </a>
+                    </li>
+                    <li class="overflow_btn">
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-restroom"></i></span>
+                            <h4>Community Help</h4>
+                        </a>
+                    </li>
+                    <li class="overflow_btn">
+                        <a href="#">
+                            <span class="icon"><i class="fab fa-facebook-messenger"></i></span>
+                            <h4>Messenger</h4>
+                        </a>
+                    </li>
+                    <li class="see_less">
+                        <a href="#">
+                            <span class="icon"><i class="fas fa-angle-up"></i></span>
+                            <h4>See Less</h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Left Sidebar Ends Here -->
+            <!-- Middle Feed Starts Here -->
+            <div class="middle_feed">
+                <div class="story">
+                    <ul class="d_flex_sb">
+                        <li>
+                            <a href="">
+                                <div class="create_story">
+                                    <div class="story_thumb">
+                                        <img src="https://pbs.twimg.com/profile_images/3691489229/e0b2f866e2e1449ad4303bc8a57c5168_400x400.jpeg" alt="">
+                                    </div>
+                                    <div class="story_btn">
+                                        <span class="d_flex_center"><i class="fas fa-plus"></i></span>
+                                        <p>Create Story</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="create_story other-story">
+                                    <div class="story_thumb">
+                                        <img src="https://playtusu.com/wp-content/uploads/2020/11/conan-obrien-tbs-hbo-max-show-weekly.jpg" alt="">
+                                    </div>
+                                    <div class="story_profile">
+                                        <span style="position: absolute;border: 2px solid #166ADA; top: 10px; left: 10px; z-index: 5; border-radius: 50px;" class="round-img"><img src="https://ca-times.brightspotcdn.com/dims4/default/48fa27c/2147483647/strip/true/crop/3500x2445+0+0/resize/840x587!/format/webp/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Ff1%2F2e%2F09ae54784b92852c46f56139e17f%2Fturner-networks-2018-upfront-38427.jpg" style="width: 35px; height: 35px;" alt=""></span>
+                                    </div>
+                                    <div class="story_name" style="position: absolute; left: 0; bottom: 5px; text-align: center; width: 100%; z-index: 5;">
+                                        
+                                        <p style="color: #fff; font-size: 12px;">Conan O'Brien</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="create_story other-story">
+                                    <div class="story_thumb">
+                                        <img src="https://i.guim.co.uk/img/media/7693d1d8e23cd8efdde91a5f0075304d3f62798c/0_550_8256_4954/master/8256.jpg?width=465&quality=45&auto=format&fit=max&dpr=2&s=a4c162e967a316fdb82a0c36107e5631" alt="">
+                                    </div>
+                                    <div class="story_profile">
+                                        <span style="position: absolute;border: 2px solid #166ADA; top: 10px; left: 10px; z-index: 5; border-radius: 50px;" class="round-img"><img src="https://image.cnbcfm.com/api/v1/image/106878527-1620223837055-106748412-1602881184740-biden.jpg?v=1620224062" style="width: 35px; height: 35px;" alt=""></span>
+                                    </div>
+                                    <div class="story_name" style="position: absolute; left: 0; bottom: 5px; text-align: center; width: 100%; z-index: 5;">
+                                        
+                                        <p style="color: #fff; font-size: 12px;">Joe Biden</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="create_story other-story">
+                                    <div class="story_thumb">
+                                        <img src="https://imgrosetta.mynet.com.tr/file/13369013/13369013-728xauto.jpg" alt="">
+                                    </div>
+                                    <div class="story_profile">
+                                        <span style="position: absolute;border: 2px solid #166ADA; top: 10px; left: 10px; z-index: 5; border-radius: 50px;" class="round-img"><img src="https://foto.haberler.com/haber/2021/06/09/eda-taspinar-kimdir-eda-taspinar-kac-yasinda-14189863_8395_amp.jpg" style="width: 35px; height: 35px;" alt=""></span>
+                                    </div>
+                                    <div class="story_name" style="position: absolute; left: 0; bottom: 5px; text-align: center; width: 100%; z-index: 5;">
+                                        
+                                        <p style="color: #fff; font-size: 12px;">Eda Taspinar</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="create_story other-story">
+                                    <div class="story_thumb">
+                                        <img src="https://cdnntr1.img.sputniknews.com/img/102782/22/1027822277_569:0:2930:2598_1920x0_80_0_0_90ddcc0c31b22a72ab513d9b80c58763.jpg" alt="">
+                                    </div>
+                                    <div class="story_profile">
+                                        <span style="position: absolute;border: 2px solid #166ADA; top: 10px; left: 10px; z-index: 5; border-radius: 50px;" class="round-img"><img src="https://tr.web.img4.acsta.net/pictures/17/01/10/13/53/476324.jpg" style="width: 35px; height: 35px;" alt=""></span>
+                                    </div>
+                                    <div class="story_name" style="position: absolute; left: 0; bottom: 5px; text-align: center; width: 100%; z-index: 5;">
+                                        
+                                        <p style="color: #fff; font-size: 12px;">Meryl Streep</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="feed_and_add_section">
+                    <div class="create_post common_bg_feed">
+                        <div class="create_input d_flex">
+                            <div class="profile_thumb round-img">
+                                <img src="https://pbs.twimg.com/profile_images/3691489229/e0b2f866e2e1449ad4303bc8a57c5168_400x400.jpeg" alt="">
+                            </div>
+                            <form action="">
+                                <input type="text" placeholder="What's On Your Pussy Ahmet?">
+                            </form>
+                        </div>
+                        <div class="create_btn">
+                            <ul class="d_flex">
+                                <li>
+                                    <a href="#" class="d_flex_center">
+                                        <span><i class="fas fa-video"></i></span>
+                                        <h4>Live Video</h4>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d_flex_center">
+                                        <span><i class="fas fa-image"></i></span>
+                                        <h4>Photo/Video</h4>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d_flex_center">
+                                        <span><i class="fas fa-shoe-prints"></i></span>
+                                        <h4>Feeling/Activity</h4>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="create_room common_bg_feed">
+                        <a href="#" class="d_flex_center">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Create Room</span>
+                        </a>
+                    </div>
+                    <div class="main_post common_bg_feed">
+                        <div class="post_top d_flex_sb">
+                            <div class="profile d_flex">
+                                <div class="round-img">
+                                    <img src="https://pbs.twimg.com/profile_images/3691489229/e0b2f866e2e1449ad4303bc8a57c5168_400x400.jpeg">
+                                </div>
+                                <div class="post_time_name ml-5">
+                                    <span>Ahmet Berkay</span>
+                                    <div class="time d_flex">
+                                        <span class="mr-5">23h</span>
+                                        <i class="fas fa-globe-europe"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post_more">
+                                <a href="#" class="d_flex_center">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post_caption">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis assumenda, corporis optio nulla est natus architecto, eos expedita sed dolore ut eum amet explicabo accusantium adipisci et magnam suscipit nisi.</p>
+                        </div>
+                        <div class="post_hashtag">
+                            <ul class="d_flex">
+                                <li><a href="#">#Work</a></li>
+                                <li><a href="#">#Turkey</a></li>
+                                <li><a href="#">#Home</a></li>
+                            </ul>
+                        </div>
+                        <div class="post_img">
+                            <a href="#"><img src="https://images.unsplash.com/photo-1642635783141-4e38da63aab2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt=""></a>
+                        </div>
+                        <div class="see_who_react">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex">
+                                    <div class="likes d_flex mr-5">
+                                        <span><i class="fas fa-thumbs-up"></i></span>
+                                        <span><i class="fas fa-heart"></i></span>
+                                    </div>
+                                    <div class="like_count">
+                                        <span>You and 52k others</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="comment_and_share d_flex">
+                                        <span class="mr-5">15k comments</span>
+                                        <span>11 Share</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="like_option">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex center like_btn">
+                                    <span class="mr-5 b_like"><i class="fas fa-heart"></i></span>
+                                    <span class="mr-5 a_like"><i class="fas fa-heart"></i></span>
+                                    <h4>Like</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-comment"></i></span>
+                                    <h4>Comment</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-share-alt"></i></span>
+                                    <h4>Share</h4>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main_post common_bg_feed">
+                        <div class="post_top d_flex_sb">
+                            <div class="profile d_flex">
+                                <div class="round-img">
+                                    <img src="https://pbs.twimg.com/profile_images/3691489229/e0b2f866e2e1449ad4303bc8a57c5168_400x400.jpeg">
+                                </div>
+                                <div class="post_time_name ml-5">
+                                    <span>Ahmet Berkay</span>
+                                    <div class="time d_flex">
+                                        <span class="mr-5">23h</span>
+                                        <i class="fas fa-globe-europe"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post_more">
+                                <a href="#" class="d_flex_center">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post_caption">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis assumenda, corporis optio nulla est natus architecto, eos expedita sed dolore ut eum amet explicabo accusantium adipisci et magnam suscipit nisi.</p>
+                        </div>
+                        <div class="post_hashtag">
+                            <ul class="d_flex">
+                                <li><a href="#">#Work</a></li>
+                                <li><a href="#">#Turkey</a></li>
+                                <li><a href="#">#Home</a></li>
+                            </ul>
+                        </div>
+                        <div class="post_img">
+                            <a href="#"><img src="https://images.unsplash.com/photo-1642673168329-472cc4b05ed5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt=""></a>
+                        </div>
+                        <div class="see_who_react">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex">
+                                    <div class="likes d_flex mr-5">
+                                        <span><i class="fas fa-thumbs-up"></i></span>
+                                        <span><i class="fas fa-heart"></i></span>
+                                    </div>
+                                    <div class="like_count">
+                                        <span>You and 52k others</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="comment_and_share d_flex">
+                                        <span class="mr-5">15k comments</span>
+                                        <span>11 Share</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="like_option">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex center like_btn">
+                                    <span class="mr-5 b_like"><i class="fas fa-heart"></i></span>
+                                    <span class="mr-5 a_like"><i class="fas fa-heart"></i></span>
+                                    <h4>Like</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-comment"></i></span>
+                                    <h4>Comment</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-share-alt"></i></span>
+                                    <h4>Share</h4>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main_post common_bg_feed">
+                        <div class="post_top d_flex_sb">
+                            <div class="profile d_flex">
+                                <div class="round-img">
+                                    <img src="https://pbs.twimg.com/profile_images/3691489229/e0b2f866e2e1449ad4303bc8a57c5168_400x400.jpeg">
+                                </div>
+                                <div class="post_time_name ml-5">
+                                    <span>Ahmet Berkay</span>
+                                    <div class="time d_flex">
+                                        <span class="mr-5">23h</span>
+                                        <i class="fas fa-globe-europe"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post_more">
+                                <a href="#" class="d_flex_center">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post_caption">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis assumenda, corporis optio nulla est natus architecto, eos expedita sed dolore ut eum amet explicabo accusantium adipisci et magnam suscipit nisi.</p>
+                        </div>
+                        <div class="post_hashtag">
+                            <ul class="d_flex">
+                                <li><a href="#">#Work</a></li>
+                                <li><a href="#">#Turkey</a></li>
+                                <li><a href="#">#Home</a></li>
+                            </ul>
+                        </div>
+                        <div class="post_img">
+                            <a href="#"><img src="https://images.unsplash.com/photo-1583887785428-b8ca627eb313?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt=""></a>
+                        </div>
+                        <div class="see_who_react">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex">
+                                    <div class="likes d_flex mr-5">
+                                        <span><i class="fas fa-thumbs-up"></i></span>
+                                        <span><i class="fas fa-heart"></i></span>
+                                    </div>
+                                    <div class="like_count">
+                                        <span>You and 52k others</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="comment_and_share d_flex">
+                                        <span class="mr-5">15k comments</span>
+                                        <span>11 Share</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="like_option">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex center like_btn">
+                                    <span class="mr-5 b_like"><i class="fas fa-heart"></i></span>
+                                    <span class="mr-5 a_like"><i class="fas fa-heart"></i></span>
+                                    <h4>Like</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-comment"></i></span>
+                                    <h4>Comment</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-share-alt"></i></span>
+                                    <h4>Share</h4>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main_post common_bg_feed">
+                        <div class="post_top d_flex_sb">
+                            <div class="profile d_flex">
+                                <div class="round-img">
+                                    <img src="https://pbs.twimg.com/profile_images/3691489229/e0b2f866e2e1449ad4303bc8a57c5168_400x400.jpeg">
+                                </div>
+                                <div class="post_time_name ml-5">
+                                    <span>Ahmet Berkay</span>
+                                    <div class="time d_flex">
+                                        <span class="mr-5">23h</span>
+                                        <i class="fas fa-globe-europe"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post_more">
+                                <a href="#" class="d_flex_center">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post_caption">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis assumenda, corporis optio nulla est natus architecto, eos expedita sed dolore ut eum amet explicabo accusantium adipisci et magnam suscipit nisi.</p>
+                        </div>
+                        <div class="post_hashtag">
+                            <ul class="d_flex">
+                                <li><a href="#">#Work</a></li>
+                                <li><a href="#">#Turkey</a></li>
+                                <li><a href="#">#Home</a></li>
+                            </ul>
+                        </div>
+                        <div class="post_img">
+                            <a href="#"><img src="https://images.unsplash.com/flagged/photo-1555992938-f45411cc33fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt=""></a>
+                        </div>
+                        <div class="see_who_react">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex">
+                                    <div class="likes d_flex mr-5">
+                                        <span><i class="fas fa-thumbs-up"></i></span>
+                                        <span><i class="fas fa-heart"></i></span>
+                                    </div>
+                                    <div class="like_count">
+                                        <span>You and 52k others</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="comment_and_share d_flex">
+                                        <span class="mr-5">15k comments</span>
+                                        <span>11 Share</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="like_option">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex center like_btn">
+                                    <span class="mr-5 b_like"><i class="fas fa-heart"></i></span>
+                                    <span class="mr-5 a_like"><i class="fas fa-heart"></i></span>
+                                    <h4>Like</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-comment"></i></span>
+                                    <h4>Comment</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-share-alt"></i></span>
+                                    <h4>Share</h4>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main_post common_bg_feed">
+                        <div class="post_top d_flex_sb">
+                            <div class="profile d_flex">
+                                <div class="round-img">
+                                    <img src="https://pbs.twimg.com/profile_images/3691489229/e0b2f866e2e1449ad4303bc8a57c5168_400x400.jpeg">
+                                </div>
+                                <div class="post_time_name ml-5">
+                                    <span>Ahmet Berkay</span>
+                                    <div class="time d_flex">
+                                        <span class="mr-5">23h</span>
+                                        <i class="fas fa-globe-europe"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post_more">
+                                <a href="#" class="d_flex_center">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post_caption">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis assumenda, corporis optio nulla est natus architecto, eos expedita sed dolore ut eum amet explicabo accusantium adipisci et magnam suscipit nisi.</p>
+                        </div>
+                        <div class="post_hashtag">
+                            <ul class="d_flex">
+                                <li><a href="#">#Work</a></li>
+                                <li><a href="#">#Turkey</a></li>
+                                <li><a href="#">#Home</a></li>
+                            </ul>
+                        </div>
+                        <div class="post_img">
+                            <a href="#"><img src="https://images.unsplash.com/photo-1642635783141-4e38da63aab2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt=""></a>
+                        </div>
+                        <div class="see_who_react">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex">
+                                    <div class="likes d_flex mr-5">
+                                        <span><i class="fas fa-thumbs-up"></i></span>
+                                        <span><i class="fas fa-heart"></i></span>
+                                    </div>
+                                    <div class="like_count">
+                                        <span>You and 52k others</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="comment_and_share d_flex">
+                                        <span class="mr-5">15k comments</span>
+                                        <span>11 Share</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="like_option">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex center like_btn">
+                                    <span class="mr-5 b_like"><i class="fas fa-heart"></i></span>
+                                    <span class="mr-5 a_like"><i class="fas fa-heart"></i></span>
+                                    <h4>Like</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-comment"></i></span>
+                                    <h4>Comment</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-share-alt"></i></span>
+                                    <h4>Share</h4>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main_post common_bg_feed">
+                        <div class="post_top d_flex_sb">
+                            <div class="profile d_flex">
+                                <div class="round-img">
+                                    <img src="https://pbs.twimg.com/profile_images/3691489229/e0b2f866e2e1449ad4303bc8a57c5168_400x400.jpeg">
+                                </div>
+                                <div class="post_time_name ml-5">
+                                    <span>Ahmet Berkay</span>
+                                    <div class="time d_flex">
+                                        <span class="mr-5">23h</span>
+                                        <i class="fas fa-globe-europe"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post_more">
+                                <a href="#" class="d_flex_center">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post_caption">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis assumenda, corporis optio nulla est natus architecto, eos expedita sed dolore ut eum amet explicabo accusantium adipisci et magnam suscipit nisi.</p>
+                        </div>
+                        <div class="post_hashtag">
+                            <ul class="d_flex">
+                                <li><a href="#">#Work</a></li>
+                                <li><a href="#">#Turkey</a></li>
+                                <li><a href="#">#Home</a></li>
+                            </ul>
+                        </div>
+                        <div class="post_img">
+                            <a href="#"><img src="https://images.unsplash.com/flagged/photo-1555992939-a8b868d0e237?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt=""></a>
+                        </div>
+                        <div class="see_who_react">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex">
+                                    <div class="likes d_flex mr-5">
+                                        <span><i class="fas fa-thumbs-up"></i></span>
+                                        <span><i class="fas fa-heart"></i></span>
+                                    </div>
+                                    <div class="like_count">
+                                        <span>You and 52k others</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="comment_and_share d_flex">
+                                        <span class="mr-5">15k comments</span>
+                                        <span>11 Share</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="like_option">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex center like_btn">
+                                    <span class="mr-5 b_like"><i class="fas fa-heart"></i></span>
+                                    <span class="mr-5 a_like"><i class="fas fa-heart"></i></span>
+                                    <h4>Like</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-comment"></i></span>
+                                    <h4>Comment</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-share-alt"></i></span>
+                                    <h4>Share</h4>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main_post common_bg_feed">
+                        <div class="post_top d_flex_sb">
+                            <div class="profile d_flex">
+                                <div class="round-img">
+                                    <img src="https://pbs.twimg.com/profile_images/3691489229/e0b2f866e2e1449ad4303bc8a57c5168_400x400.jpeg">
+                                </div>
+                                <div class="post_time_name ml-5">
+                                    <span>Ahmet Berkay</span>
+                                    <div class="time d_flex">
+                                        <span class="mr-5">23h</span>
+                                        <i class="fas fa-globe-europe"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post_more">
+                                <a href="#" class="d_flex_center">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post_caption">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis assumenda, corporis optio nulla est natus architecto, eos expedita sed dolore ut eum amet explicabo accusantium adipisci et magnam suscipit nisi.</p>
+                        </div>
+                        <div class="post_hashtag">
+                            <ul class="d_flex">
+                                <li><a href="#">#Work</a></li>
+                                <li><a href="#">#Turkey</a></li>
+                                <li><a href="#">#Home</a></li>
+                            </ul>
+                        </div>
+                        <div class="post_img">
+                            <a href="#"><img src="https://images.unsplash.com/photo-1611601679655-7c8bc197f0c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt=""></a>
+                        </div>
+                        <div class="see_who_react">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex">
+                                    <div class="likes d_flex mr-5">
+                                        <span><i class="fas fa-thumbs-up"></i></span>
+                                        <span><i class="fas fa-heart"></i></span>
+                                    </div>
+                                    <div class="like_count">
+                                        <span>You and 52k others</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="comment_and_share d_flex">
+                                        <span class="mr-5">15k comments</span>
+                                        <span>11 Share</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="like_option">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex center like_btn">
+                                    <span class="mr-5 b_like"><i class="fas fa-heart"></i></span>
+                                    <span class="mr-5 a_like"><i class="fas fa-heart"></i></span>
+                                    <h4>Like</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-comment"></i></span>
+                                    <h4>Comment</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-share-alt"></i></span>
+                                    <h4>Share</h4>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main_post common_bg_feed">
+                        <div class="post_top d_flex_sb">
+                            <div class="profile d_flex">
+                                <div class="round-img">
+                                    <img src="https://pbs.twimg.com/profile_images/3691489229/e0b2f866e2e1449ad4303bc8a57c5168_400x400.jpeg">
+                                </div>
+                                <div class="post_time_name ml-5">
+                                    <span>Ahmet Berkay</span>
+                                    <div class="time d_flex">
+                                        <span class="mr-5">23h</span>
+                                        <i class="fas fa-globe-europe"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post_more">
+                                <a href="#" class="d_flex_center">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post_caption">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis assumenda, corporis optio nulla est natus architecto, eos expedita sed dolore ut eum amet explicabo accusantium adipisci et magnam suscipit nisi.</p>
+                        </div>
+                        <div class="post_hashtag">
+                            <ul class="d_flex">
+                                <li><a href="#">#Work</a></li>
+                                <li><a href="#">#Turkey</a></li>
+                                <li><a href="#">#Home</a></li>
+                            </ul>
+                        </div>
+                        <div class="post_img">
+                            <a href="#"><img src="https://images.unsplash.com/photo-1524612791852-a605042808d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt=""></a>
+                        </div>
+                        <div class="see_who_react">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex">
+                                    <div class="likes d_flex mr-5">
+                                        <span><i class="fas fa-thumbs-up"></i></span>
+                                        <span><i class="fas fa-heart"></i></span>
+                                    </div>
+                                    <div class="like_count">
+                                        <span>You and 52k others</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="comment_and_share d_flex">
+                                        <span class="mr-5">15k comments</span>
+                                        <span>11 Share</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="like_option">
+                            <ul class="d_flex_sb">
+                                <li class="d_flex center like_btn">
+                                    <span class="mr-5 b_like"><i class="fas fa-heart"></i></span>
+                                    <span class="mr-5 a_like"><i class="fas fa-heart"></i></span>
+                                    <h4>Like</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-comment"></i></span>
+                                    <h4>Comment</h4>
+                                </li>
+                                <li class="d_flex center">
+                                    <span class="mr-5"><i class="fas fa-share-alt"></i></span>
+                                    <h4>Share</h4>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Middle Feed Ends Here -->
+            <div class="right-sidebar">
+                <div class="contact_list">
+                    <div class="contact_title">
+                        <ul class="d_flex_sb">
+                            <li>
+                                <p>Contact</p>
+                            </li>
+                            <li>
+                                <div class="more_option">
+                                    <ul class="d_flex">
+                                        <li><a href="#" class="d_flex_center"><i class="fas fa-external-link-alt"></i></a></li>
+                                        <li><a href="#" class="d_flex_center"><i class="fas fa-search"></i></a></li>
+                                        <li><a href="#" class="d_flex_center"><i class="fas fa-ellipsis-h"></i></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="contact">
+                        <ul>
+                            <li>
+                                <a href="#" class="d_flex">
+                                    <div class="round-img">
+                                        <img src="https://ca-times.brightspotcdn.com/dims4/default/48fa27c/2147483647/strip/true/crop/3500x2445+0+0/resize/840x587!/format/webp/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Ff1%2F2e%2F09ae54784b92852c46f56139e17f%2Fturner-networks-2018-upfront-38427.jpg" alt="">
+                                    </div>
+                                    <h4>Conan O'Brien</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d_flex">
+                                    <div class="round-img">
+                                        <img src="https://image.cnbcfm.com/api/v1/image/106878527-1620223837055-106748412-1602881184740-biden.jpg?v=1620224062" alt="">
+                                    </div>
+                                    <h4>Joe Biden</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d_flex">
+                                    <div class="round-img">
+                                        <img src="https://foto.haberler.com/haber/2021/06/09/eda-taspinar-kimdir-eda-taspinar-kac-yasinda-14189863_8395_amp.jpg" alt="">
+                                    </div>
+                                    <h4>Eda Taspinar</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d_flex">
+                                    <div class="round-img">
+                                        <img src="https://tr.web.img4.acsta.net/pictures/17/01/10/13/53/476324.jpg" alt="">
+                                    </div>
+                                    <h4>Meryl Streep</h4>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Content Ends Here -->
+
+    </div>
+
+    <script src="js/jquery.js"></script>
+
+    <script>
+        const setBg = () => {
+            const randomColor = Math.floor(Math.random()*16777215).toString(16);
+            document.body.style.backgroundColor = "#" + randomColor;
+            color.innerHTML = "#" + randomColor;
+        }
+
+        $(document).ready(function() {
+            $('.see_more').click(function() {
+                $(this).hide();
+                $(".overflow_btn").addClass("active");
+                $(".see_less").addClass("active");
+            })
+
+            $('.see_less').click(function() {
+                $('.see_more').show();
+                $(".overflow_btn").removeClass("active");
+                $(".see_less").removeClass("active");
+            })
+
+            $('.like_btn').click(function() {
+                $('.b_like').toggleClass('hide')
+                $('.a_like').toggleClass('show')
+                $('.like_btn h4').toggleClass('blue')
+            })
+
+        })
+
+        // setBg();
+    </script>
+</body>
+</html>
